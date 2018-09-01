@@ -6,4 +6,9 @@ The keis equipment managment system is quite difficult to set up correctly. To s
 to help all wayward sons out there.
 
 # Install
-When this project is finished, it should be as simple as writing 'docker-compose up', to deploy this application
+
+## Prequesities
+ * Docker
+ * Docker compose
+
+`docker-compose up`
