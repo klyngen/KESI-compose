@@ -11,4 +11,6 @@ to help all wayward sons out there.
  * Docker
  * Docker compose
 
+## One liner install
 `docker-compose up`
+enjoy
