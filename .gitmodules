@@ -1,0 +1,6 @@
+[submodule "KEIS-frontend-angular"]
+	path = KEIS-frontend-angular
+	url = https://github.com/klyngen/KEIS-frontend-angular
+[submodule "KEIS"]
+	path = KEIS
+	url = https://github.com/klyngen/KEIS
