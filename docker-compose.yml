@@ -7,8 +7,7 @@ services:
                 command: --default-authentication-plugin=mysql_native_password --init-file="/tmp/init.sql"
                 restart: always
                 volumes:
-                        - dbdata:/var/lib/mysql
-                        - ./dbconfig/init.sql:/tmp/init.sql:z
+                        - ./dbconfig/init.sql:/tmp/init.sql:z # The z is to get passed SeLinux
 
                 ports:
                         - "33061:3306"
@@ -19,6 +18,7 @@ services:
                         MYSQL_USER: root
                         ON_CREATE_DB: keis
 
+        # CONTAINS THE BACKEND DEPENDENCIES AND CODE
         backend:
                 build:
                         context: ./KEIS
@@ -32,7 +32,7 @@ services:
                 depends_on:
                         - database
                 
-                
+        # THIS CONTAINER SERVES THE BACKEND                
         web:
                 build:
                         context: ./
@@ -41,6 +41,15 @@ services:
                 volumes_from:
                         - backend
                 ports: 
+                        - 5000:5000
+
+
+        # ANGULAR FRONTEND
+        frontend:
+                build:
+                        context: ./KEIS-frontend-angular
+                        dockerfile: Dockerfile
+                depends_on:
+                        - backend
+                ports:
                         - 80:80
-volumes:
-        dbdata:
