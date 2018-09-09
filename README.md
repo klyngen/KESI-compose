@@ -10,7 +10,15 @@ to help all wayward sons out there.
 ## Prequesities
  * Docker
  * Docker compose
+ * Git
 
-## One liner install
+## Install
+1. *Clone the repos and fetch submodules*
+`git clone --recurse-submodules -j8 https://github.com/klyngen/KESI-compose`
+2. *Set up the project*
 `docker-compose up`
-enjoy
+3. *Migrate the database*
+ - Find the backend container by running `docker ps`
+ - Enter the container by typing `docker exec -it <CONTAINER ID> php /var/www/artisan migrate`
+4. *Enjoy*
+
